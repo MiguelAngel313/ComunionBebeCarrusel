@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comunión Bebé Carrusel · Llerena</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rosa-crema: #FDF0F3;
+      --blanco: #FEFCFD;
+      --rosa-polvo: #D4849A;
+      --rosa-intenso: #C0607A;
+      --dorado: #C9A96E;
+      --dorado-claro: #EDD9A3;
+      --texto: #2A2020;
+      --texto-suave: #6B4F55;
+      --borde: rgba(212, 132, 154, 0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--blanco);
+      color: var(--texto);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: rgba(254, 252, 253, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--borde);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--texto);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-logo span { color: var(--rosa-polvo); }
+
+    /* Mobile-first: menú oculto por defecto */
+    .nav-links {
+      position: fixed;
+      top: 0; right: -100%;
+      width: min(300px, 80vw);
+      height: 100vh;
+      background: var(--blanco);
+      flex-direction: column;
+      gap: 0;
+      list-style: none;
+      padding: 80px 32px 40px;
+      transition: right 0.35s ease;
+      box-shadow: -8px 0 32px rgba(0,0,0,0.12);
+      z-index: 200;
+      display: flex;
+    }
+
+    .nav-links.open { right: 0; }
+
+    .nav-links li { border-bottom: 1px solid var(--borde); }
+    .nav-links li:last-child { border-bottom: none; margin-top: 16px; }
+
+    .nav-links a {
+      display: block;
+      padding: 15px 0;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--texto-suave);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--rosa-intenso); }
+
+    .nav-cta {
+      background: var(--rosa-polvo) !important;
+      color: white !important;
+      padding: 12px 22px !important;
+      border-radius: 50px;
+      text-align: center;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--rosa-intenso) !important; }
+
+    .nav-burger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 300;
+      padding: 4px;
+    }
+
+    .nav-burger span {
+      width: 24px; height: 2px;
+      background: var(--texto);
+      border-radius: 2px;
+      transition: all 0.3s;
+      display: block;
+    }
+
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      z-index: 150;
+    }
+
+    .nav-overlay.open { display: block; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 20px 64px;
+      background: linear-gradient(160deg, #FDF0F3 0%, #FEF8FA 50%, #FBF5E8 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-deco {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .deco-item {
+      position: absolute;
+      opacity: 0.18;
+      animation: floatDeco linear infinite;
+    }
+
+    @keyframes floatDeco {
+      0%   { transform: translateY(0px) rotate(0deg); opacity: 0.12; }
+      50%  { transform: translateY(-18px) rotate(8deg); opacity: 0.22; }
+      100% { transform: translateY(0px) rotate(0deg); opacity: 0.12; }
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--dorado);
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 8vw, 5.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--texto);
+      margin-bottom: 10px;
+    }
+
+    .hero h1 em { font-style: italic; color: var(--rosa-polvo); }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 3vw, 1.15rem);
+      color: var(--texto-suave);
+      font-weight: 300;
+      margin-top: 14px;
+      margin-bottom: 36px;
+      max-width: 480px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 320px;
+      align-items: center;
+    }
+
+    .btn-primary, .btn-secondary {
+      width: 100%;
+      justify-content: center;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      transition: background 0.25s, transform 0.2s, border-color 0.25s, color 0.25s;
+    }
+
+    .btn-primary {
+      background: var(--rosa-polvo);
+      color: white;
+    }
+
+    .btn-primary:hover { background: var(--rosa-intenso); transform: translateY(-2px); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--texto);
+      border: 1.5px solid var(--borde);
+    }
+
+    .btn-secondary:hover { border-color: var(--rosa-polvo); color: var(--rosa-intenso); transform: translateY(-2px); }
+
+    .hero-badge {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: white;
+      border: 1px solid var(--borde);
+      border-radius: 50px;
+      padding: 10px 18px;
+      font-size: 0.78rem;
+      color: var(--texto-suave);
+      font-weight: 500;
+      box-shadow: 0 4px 20px rgba(212,132,154,0.1);
+      white-space: nowrap;
+    }
+
+    .stars { color: #E8A045; letter-spacing: 1px; }
+
+    /* ─── STRIP ─── */
+    .strip {
+      background: var(--rosa-polvo);
+      padding: 12px 0;
+      overflow: hidden;
+    }
+
+    .strip-inner {
+      display: flex;
+      gap: 40px;
+      animation: stripMove 18s linear infinite;
+      white-space: nowrap;
+    }
+
+    @keyframes stripMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .strip span {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.88);
+      flex-shrink: 0;
+    }
+
+    .strip-dot { color: rgba(255,255,255,0.5); }
+
+    /* ─── SECTIONS SHARED ─── */
+    section { padding: 64px 20px; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--dorado);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 5vw, 3rem);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--texto);
+      margin-bottom: 16px;
+    }
+
+    .section-title em { font-style: italic; color: var(--rosa-polvo); }
+
+    .section-desc {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--texto-suave);
+      max-width: 560px;
+    }
+
+    /* ─── CATEGORÍAS ─── */
+    .categorias { background: var(--blanco); }
+
+    .categorias-inner { max-width: 1100px; margin: 0 auto; }
+
+    .categorias-header {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+
+    .categorias-header .section-desc { margin: 0 auto; }
+
+    .cat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .cat-card {
+      background: var(--rosa-crema);
+      border-radius: 16px;
+      padding: 28px 20px 24px;
+      text-align: center;
+      border: 1px solid var(--borde);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .cat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(212,132,154,0.15);
+    }
+
+    .cat-icon {
+      font-size: 2.4rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .cat-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--texto);
+      margin-bottom: 8px;
+    }
+
+    .cat-card p {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--texto-suave);
+    }
+
+    /* ─── NOSOTROS ─── */
+    .nosotros { background: linear-gradient(135deg, #FDF0F3 0%, #FBF5E8 100%); }
+
+    .nosotros-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .nosotros-visual { position: relative; padding-bottom: 24px; }
+
+    .visual-card-main {
+      background: white;
+      border-radius: 20px;
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(212,132,154,0.12);
+      border: 1px solid var(--borde);
+    }
+
+    .visual-big-icon {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .visual-card-main h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--texto);
+      margin-bottom: 8px;
+    }
+
+    .visual-card-main p {
+      font-size: 0.88rem;
+      color: var(--texto-suave);
+      line-height: 1.7;
+    }
+
+    .visual-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--dorado);
+      color: white;
+      border-radius: 50px;
+      padding: 10px 20px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      box-shadow: 0 4px 16px rgba(201,169,110,0.35);
+      margin-top: 16px;
+      line-height: 1.4;
+    }
+
+    .nosotros-content .section-desc { margin-bottom: 28px; }
+
+    .features-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--texto-suave);
+      line-height: 1.6;
+    }
+
+    .feat-icon { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+
+    /* ─── COLECCIONES ─── */
+    .colecciones { background: var(--blanco); }
+
+    .colecciones-inner { max-width: 1100px; margin: 0 auto; }
+
+    .col-header {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .col-header .btn-secondary {
+      width: auto;
+      align-self: flex-start;
+      padding: 11px 24px;
+      font-size: 0.82rem;
+    }
+
+    .col-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .col-card {
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--borde);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .col-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(212,132,154,0.18);
+    }
+
+    .col-img {
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .col-img-1 { background: linear-gradient(135deg, #FCE8EE 0%, #F9D2DF 100%); }
+    .col-img-2 { background: linear-gradient(135deg, #E8F4FC 0%, #D0E8F9 100%); }
+    .col-img-3 { background: linear-gradient(135deg, #F8F0E8 0%, #F2E4D0 100%); }
+    .col-img-4 { background: linear-gradient(135deg, #EEF8EE 0%, #D4ECDC 100%); }
+    .col-img-5 { background: linear-gradient(135deg, #F8EEF8 0%, #EDD4ED 100%); }
+    .col-img-6 { background: linear-gradient(135deg, #FEF8E8 0%, #F8ECCB 100%); }
+
+    .col-info {
+      padding: 14px 16px 16px;
+      background: white;
+    }
+
+    .col-info h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--texto);
+      margin-bottom: 3px;
+    }
+
+    .col-info p { font-size: 0.76rem; color: var(--texto-suave); }
+
+    .col-tag {
+      position: absolute;
+      top: 10px; right: 10px;
+      background: white;
+      color: var(--rosa-polvo);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    /* ─── TESTIMONIOS ─── */
+    .testimonios { background: linear-gradient(160deg, #FDF0F3 0%, #FBF5E8 100%); }
+
+    .testimonios-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .testimonios-inner .section-title { margin-bottom: 40px; }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      text-align: left;
+    }
+
+    .testi-card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px 22px;
+      border: 1px solid var(--borde);
+      box-shadow: 0 4px 24px rgba(212,132,154,0.08);
+    }
+
+    .testi-stars { font-size: 0.95rem; letter-spacing: 2px; color: #E8A045; margin-bottom: 12px; }
+
+    .testi-text {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: var(--texto-suave);
+      font-style: italic;
+      margin-bottom: 18px;
+    }
+
+    .testi-author { display: flex; align-items: center; gap: 10px; }
+
+    .testi-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: var(--rosa-crema);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .testi-name { font-weight: 600; font-size: 0.85rem; color: var(--texto); }
+    .testi-role { font-size: 0.75rem; color: var(--texto-suave); }
+
+    /* ─── INFO TIENDA ─── */
+    .info-tienda { background: var(--blanco); }
+
+    .info-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .info-block h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+      font-weight: 600;
+      color: var(--texto);
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+
+    .info-block h2 em { font-style: italic; color: var(--rosa-polvo); }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 18px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--borde);
+    }
+
+    .info-row:last-of-type { border-bottom: none; margin-bottom: 0; }
+
+    .info-ico {
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      background: var(--rosa-crema);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .info-row-text h4 { font-weight: 600; font-size: 0.88rem; color: var(--texto); margin-bottom: 3px; }
+    .info-row-text p, .info-row-text a {
+      font-size: 0.85rem;
+      color: var(--texto-suave);
+      text-decoration: none;
+      line-height: 1.6;
+    }
+
+    .info-row-text a:hover { color: var(--rosa-intenso); }
+
+    .horarios-card {
+      background: var(--rosa-crema);
+      border-radius: 20px;
+      padding: 28px 24px;
+      border: 1px solid var(--borde);
+    }
+
+    .horarios-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--texto);
+      margin-bottom: 20px;
+    }
+
+    .horario-fila {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(212,132,154,0.15);
+      font-size: 0.88rem;
+    }
+
+    .horario-fila:last-child { border-bottom: none; }
+
+    .horario-dia { color: var(--texto); font-weight: 500; }
+    .horario-hora { color: var(--texto-suave); font-size: 0.82rem; }
+    .horario-cerrado { color: var(--rosa-polvo); font-style: italic; }
+
+    .badge-abierto {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #E8F5E9;
+      color: #2E7D32;
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-top: 18px;
+    }
+
+    .dot-verde {
+      width: 7px; height: 7px;
+      background: #4CAF50;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ─── CTA FINAL ─── */
+    .cta-final {
+      background: var(--texto);
+      padding: 72px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-final::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(212,132,154,0.18) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 50%, rgba(201,169,110,0.12) 0%, transparent 60%);
+    }
+
+    .cta-final-inner { position: relative; max-width: 680px; margin: 0 auto; }
+
+    .cta-final .section-label { color: var(--dorado-claro); }
+
+    .cta-final h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 6vw, 3.4rem);
+      font-weight: 700;
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .cta-final h2 em { font-style: italic; color: var(--rosa-polvo); }
+
+    .cta-final p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
+
+    .cta-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-gold, .btn-outline-white {
+      width: 100%;
+      max-width: 300px;
+      justify-content: center;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 15px 28px;
+      transition: background 0.2s, transform 0.2s, border-color 0.2s;
+    }
+
+    .btn-gold { background: var(--dorado); color: white; }
+    .btn-gold:hover { background: #B8924A; transform: translateY(-2px); }
+
+    .btn-outline-white {
+      background: transparent;
+      color: white;
+      border: 1.5px solid rgba(255,255,255,0.3);
+    }
+
+    .btn-outline-white:hover { border-color: rgba(255,255,255,0.7); transform: translateY(-2px); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #1E1618;
+      padding: 40px 20px 28px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    .footer-logo span { color: var(--rosa-polvo); }
+
+    footer p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.9;
+    }
+
+    footer a { color: rgba(255,255,255,0.45); text-decoration: none; }
+    footer a:hover { color: var(--rosa-polvo); }
+
+    .footer-divider {
+      width: 40px; height: 1px;
+      background: rgba(255,255,255,0.1);
+      margin: 18px auto;
+    }
+
+    /* ══════════════════════════════
+       TABLET — 600px+
+    ══════════════════════════════ */
+    @media (min-width: 600px) {
+      section { padding: 80px 32px; }
+
+      .hero { padding: 110px 32px 72px; }
+
+      .hero-actions {
+        flex-direction: row;
+        max-width: none;
+        width: auto;
+      }
+
+      .btn-primary, .btn-secondary { width: auto; }
+
+      .cat-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .col-grid  { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+      .col-img { height: 180px; font-size: 3.5rem; }
+
+      .testi-grid { grid-template-columns: 1fr 1fr; }
+
+      .cta-btns { flex-direction: row; justify-content: center; }
+      .btn-gold, .btn-outline-white { width: auto; max-width: none; }
+    }
+
+    /* ══════════════════════════════
+       DESKTOP — 900px+
+    ══════════════════════════════ */
+    @media (min-width: 900px) {
+      nav { padding: 18px 48px; }
+
+      .nav-logo { font-size: 1.15rem; }
+
+      /* Menú visible, sin drawer */
+      .nav-links {
+        position: static;
+        width: auto;
+        height: auto;
+        flex-direction: row;
+        gap: 32px;
+        padding: 0;
+        box-shadow: none;
+        background: transparent;
+        transition: none;
+      }
+
+      .nav-links li { border-bottom: none; }
+      .nav-links li:last-child { margin-top: 0; }
+      .nav-links a { padding: 0; font-size: 0.85rem; display: inline; }
+      .nav-cta { padding: 9px 22px !important; }
+
+      .nav-burger { display: none; }
+
+      section { padding: 96px 48px; }
+
+      .hero { padding: 130px 48px 96px; }
+      .hero h1 { font-size: clamp(3rem, 6vw, 5.2rem); }
+
+      .nosotros-inner {
+        flex-direction: row;
+        gap: 72px;
+        align-items: center;
+      }
+
+      .nosotros-inner > * { flex: 1; }
+
+      .nosotros-visual { padding-bottom: 0; }
+
+      .visual-badge {
+        display: inline-flex;
+        margin-top: 0;
+        position: absolute;
+        bottom: -16px;
+        right: -16px;
+      }
+
+      .visual-card-main { padding: 48px 36px; }
+      .visual-big-icon { font-size: 5rem; }
+
+      .col-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 52px;
+      }
+
+      .col-header .btn-secondary { align-self: auto; }
+
+      .col-img { height: 220px; font-size: 4rem; }
+
+      .testi-grid { grid-template-columns: repeat(3, 1fr); }
+
+      .info-inner {
+        flex-direction: row;
+        gap: 64px;
+        align-items: start;
+      }
+
+      .info-inner > * { flex: 1; }
+
+      .horarios-card { padding: 36px; }
+
+      .cta-final { padding: 96px 48px; }
+    }
+
+    /* ══════════════════════════════
+       WIDE — 1100px+
+    ══════════════════════════════ */
+    @media (min-width: 1100px) {
+      nav { padding: 18px 64px; }
+      .cat-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#"><span>Comunión</span> Bebé Carrusel</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#categorias">Colecciones</a></li>
+      <li><a href="#nosotros">Nosotras</a></li>
+      <li><a href="#info">La Tienda</a></li>
+      <li><a href="tel:672577711" class="nav-cta">📞 Llamar</a></li>
+    </ul>
+    <div class="nav-burger" id="burger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="carousel-deco" id="carouselDeco"></div>
+
+    <span class="hero-eyebrow">✦ Llerena, Badajoz ✦</span>
+    <h1>
+      El día más <em>especial</em><br>merece la ropa más bonita
+    </h1>
+    <p class="hero-sub">
+      Trajes de comunión, bautizo y celebraciones para los pequeños que llenan tu vida de alegría.
+    </p>
+    <div class="hero-actions">
+      <a href="#categorias" class="btn-primary">🌸 Ver colecciones</a>
+      <a href="tel:672577711" class="btn-secondary">📞 Llamar ahora</a>
+    </div>
+    <div class="hero-badge">
+      <span class="stars">★★★★★</span>
+      <span>&nbsp;5.0 · Valoración perfecta en Google</span>
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <div class="strip">
+    <div class="strip-inner" id="stripInner"></div>
+  </div>
+
+  <!-- CATEGORÍAS -->
+  <section class="categorias" id="categorias">
+    <div class="categorias-inner">
+      <div class="categorias-header">
+        <span class="section-label">Nuestra oferta</span>
+        <h2 class="section-title">Para cada <em>momento</em> especial</h2>
+        <p class="section-desc">Encontrarás todo lo que necesitas para vestir a tu bebé en los días que jamás olvidarás.</p>
+      </div>
+      <div class="cat-grid">
+        <div class="cat-card">
+          <span class="cat-icon">🕊️</span>
+          <h3>Comunión</h3>
+          <p>Trajes clásicos y modernos para niñas y niños. Elegancia y comodidad para el gran día.</p>
+        </div>
+        <div class="cat-card">
+          <span class="cat-icon">🍼</span>
+          <h3>Bautizo</h3>
+          <p>Ropones, capas y conjuntos para recibir el sacramento más tierno de la infancia.</p>
+        </div>
+        <div class="cat-card">
+          <span class="cat-icon">👗</span>
+          <h3>Vestidos de fiesta</h3>
+          <p>Para bodas, bautizos de amiguitos y celebraciones donde el protagonismo es tuyo.</p>
+        </div>
+        <div class="cat-card">
+          <span class="cat-icon">🎀</span>
+          <h3>Complementos</h3>
+          <p>Diademas, zapatos, guantes y todo lo que completa el conjunto perfecto.</p>
+        </div>
+        <div class="cat-card">
+          <span class="cat-icon">👶</span>
+          <h3>Recién nacido</h3>
+          <p>Canastillas, conjuntos y ajuares para los primeros días del bebé más esperado.</p>
+        </div>
+        <div class="cat-card">
+          <span class="cat-icon">🌼</span>
+          <h3>Ropa de temporada</h3>
+          <p>Colecciones de primavera, verano, otoño e invierno para el día a día con estilo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section class="nosotros" id="nosotros">
+    <div class="nosotros-inner">
+      <div class="nosotros-visual">
+        <div class="visual-card-main">
+          <span class="visual-big-icon">🛍️</span>
+          <h3>Comunión Bebé Carrusel</h3>
+          <p>Tu tienda de confianza en Llerena para vestir a los pequeños de la familia en sus momentos más bonitos.</p>
+        </div>
+        <div class="visual-badge">
+          ★ 5.0 &nbsp;·&nbsp; <small style="font-weight:400">Google</small>
+        </div>
+      </div>
+      <div class="nosotros-content">
+        <span class="section-label">Quiénes somos</span>
+        <h2 class="section-title">Con <em>amor</em> y dedicación desde Llerena</h2>
+        <p class="section-desc">Somos una tienda especializada en moda infantil para celebraciones. Sabemos lo importante que es cada detalle cuando se trata de los más pequeños, y por eso cuidamos cada prenda con la misma ilusión con la que tú preparas ese día tan especial.</p>
+        <ul class="features-list" style="margin-top: 28px;">
+          <li><span class="feat-icon">✨</span> Atención personalizada para cada familia</li>
+          <li><span class="feat-icon">🧵</span> Selección de marcas de calidad nacional e internacional</li>
+          <li><span class="feat-icon">📏</span> Asesoramiento en tallas, colores y estilos</li>
+          <li><span class="feat-icon">🎁</span> Servicio de arreglos y ajustes disponible</li>
+          <li><span class="feat-icon">📍</span> Ubicados en el corazón de Llerena, Badajoz</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLECCIONES DESTACADAS -->
+  <section class="colecciones">
+    <div class="colecciones-inner">
+      <div class="col-header">
+        <div>
+          <span class="section-label">Destacados</span>
+          <h2 class="section-title">Colecciones<br><em>más buscadas</em></h2>
+        </div>
+        <a href="tel:672577711" class="btn-secondary">Consultar disponibilidad</a>
+      </div>
+      <div class="col-grid">
+        <div class="col-card">
+          <div class="col-img col-img-1">🌸</div>
+          <div class="col-tag">Niña</div>
+          <div class="col-info">
+            <h4>Comunión Romantica</h4>
+            <p>Encaje y tul · Blanco y marfil</p>
+          </div>
+        </div>
+        <div class="col-card">
+          <div class="col-img col-img-2">🤍</div>
+          <div class="col-tag">Niño</div>
+          <div class="col-info">
+            <h4>Comunión Clásica</h4>
+            <p>Traje y complementos · Azul y blanco</p>
+          </div>
+        </div>
+        <div class="col-card">
+          <div class="col-img col-img-3">🕊️</div>
+          <div class="col-tag">Bebé</div>
+          <div class="col-info">
+            <h4>Bautizo Tradicional</h4>
+            <p>Ropón de ceremonia · Blanco puro</p>
+          </div>
+        </div>
+        <div class="col-card">
+          <div class="col-img col-img-4">💚</div>
+          <div class="col-tag">Niña</div>
+          <div class="col-info">
+            <h4>Fiesta Primavera</h4>
+            <p>Vestido con flor · Tonos pastel</p>
+          </div>
+        </div>
+        <div class="col-card">
+          <div class="col-img col-img-5">💜</div>
+          <div class="col-tag">Bebé</div>
+          <div class="col-info">
+            <h4>Canastilla Recién Nacido</h4>
+            <p>Conjunto completo · Primera puesta</p>
+          </div>
+        </div>
+        <div class="col-card">
+          <div class="col-img col-img-6">🌟</div>
+          <div class="col-tag">Todos</div>
+          <div class="col-info">
+            <h4>Accesorios y Complementos</h4>
+            <p>Diademas, zapatos, guantes…</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section class="testimonios">
+    <div class="testimonios-inner">
+      <span class="section-label">Lo que dicen de nosotras</span>
+      <h2 class="section-title">Familias que nos <em>eligieron</em></h2>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"La atención fue maravillosa. Me ayudaron a encontrar el traje perfecto para la comunión de mi hija. ¡Repetiremos seguro!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👩</div>
+            <div>
+              <div class="testi-name">María L.</div>
+              <div class="testi-role">Madre de familia · Llerena</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"El ropón de bautizo que compramos para nuestro bebé era precioso. Calidad excelente y precio muy razonable."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👨</div>
+            <div>
+              <div class="testi-name">Antonio R.</div>
+              <div class="testi-role">Padre · Azuaga</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Nos trataron como si fuéramos de la familia. Gran variedad de modelos y siempre dispuestas a ayudar. 100% recomendadas."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👩</div>
+            <div>
+              <div class="testi-name">Carmen S.</div>
+              <div class="testi-role">Abuela · Zafra</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO TIENDA -->
+  <section class="info-tienda" id="info">
+    <div class="info-inner">
+      <div class="info-block">
+        <h2>Encuéntranos en <em>Llerena</em></h2>
+        <div class="info-row">
+          <div class="info-ico">📍</div>
+          <div class="info-row-text">
+            <h4>Dirección</h4>
+            <p>Av. del Dr. Fleming, 15<br>06900 Llerena, Badajoz</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-ico">📞</div>
+          <div class="info-row-text">
+            <h4>Teléfono</h4>
+            <a href="tel:672577711">672 57 77 11</a>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-ico">⭐</div>
+          <div class="info-row-text">
+            <h4>Valoración Google</h4>
+            <p>5.0 / 5 ★ — Tienda de ropa para bebés</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-ico">🚗</div>
+          <div class="info-row-text">
+            <h4>Cómo llegar</h4>
+            <a href="https://maps.google.com/?q=Av.+del+Dr.+Fleming,+15,+06900+Llerena,+Badajoz" target="_blank" rel="noopener">Ver en Google Maps →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="horarios-card">
+        <h3>🕐 Horario de la tienda</h3>
+        <div class="horario-fila">
+          <span class="horario-dia">Lunes – Viernes</span>
+          <span class="horario-hora">10:00 – 14:00 · 17:00 – 20:00</span>
+        </div>
+        <div class="horario-fila">
+          <span class="horario-dia">Sábados</span>
+          <span class="horario-hora">10:00 – 14:00</span>
+        </div>
+        <div class="horario-fila">
+          <span class="horario-dia">Domingos</span>
+          <span class="horario-cerrado">Cerrado</span>
+        </div>
+        <div class="badge-abierto">
+          <div class="dot-verde"></div>
+          Abre a las 10:00 h
+        </div>
+        <p style="font-size:0.8rem; color: var(--texto-suave); margin-top: 14px; line-height: 1.6;">
+          Para citas o consultas especiales, llámanos y lo organizamos con gusto. ¡Estamos aquí para ayudarte!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="cta-final-inner">
+      <span class="section-label">¿Lista para empezar?</span>
+      <h2>El conjunto <em>perfecto</em><br>te está esperando</h2>
+      <p>Ven a visitarnos o llámanos para reservar tu cita y preparar juntos el día más especial de tu pequeño.</p>
+      <div class="cta-btns">
+        <a href="tel:672577711" class="btn-gold">📞 Llamar ahora</a>
+        <a href="https://maps.google.com/?q=Av.+del+Dr.+Fleming,+15,+06900+Llerena,+Badajoz" target="_blank" class="btn-outline-white">📍 Cómo llegar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo"><span>Comunión</span> Bebé Carrusel</div>
+    <div class="footer-divider"></div>
+    <p>
+      Av. del Dr. Fleming, 15 · 06900 Llerena, Badajoz<br>
+      <a href="tel:672577711">672 57 77 11</a><br><br>
+      © 2025 Comunión Bebé Carrusel · Todos los derechos reservados
+    </p>
+  </footer>
+
+  <script>
+    // Carrusel decorativo ambient
+    const decoEmojis = ['🌸','🕊️','🎀','💮','🌼','✨','🍀','🌷','⭐','💫','🌺','🤍'];
+    const container = document.getElementById('carouselDeco');
+    for (let i = 0; i < 22; i++) {
+      const el = document.createElement('div');
+      el.classList.add('deco-item');
+      el.textContent = decoEmojis[i % decoEmojis.length];
+      el.style.left = Math.random() * 100 + '%';
+      el.style.top = Math.random() * 100 + '%';
+      el.style.animationDuration = (4 + Math.random() * 6) + 's';
+      el.style.animationDelay = (Math.random() * 4) + 's';
+      el.style.fontSize = (1 + Math.random() * 1.8) + 'rem';
+      container.appendChild(el);
+    }
+
+    // Strip ticker
+    const stripItems = ['Comunión', '✦', 'Bautizo', '✦', 'Fiesta', '✦', 'Bebé', '✦', 'Llerena', '✦', 'Badajoz', '✦', '5.0 en Google', '✦'];
+    const stripInner = document.getElementById('stripInner');
+    // duplicar para loop
+    [...stripItems, ...stripItems].forEach(t => {
+      const s = document.createElement('span');
+      s.textContent = t;
+      if (t === '✦') s.classList.add('strip-dot');
+      stripInner.appendChild(s);
+    });
+
+    // Mobile nav
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('navLinks');
+    const navOverlay = document.getElementById('navOverlay');
+
+    function openNav() {
+      navLinks.classList.add('open');
+      navOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNav() {
+      navLinks.classList.remove('open');
+      navOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    burger.addEventListener('click', () => {
+      navLinks.classList.contains('open') ? closeNav() : openNav();
+    });
+
+    navOverlay.addEventListener('click', closeNav);
+
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', closeNav);
+    });
+
+    // Nav scroll effect
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.boxShadow = window.scrollY > 20 ? '0 2px 24px rgba(42,32,32,0.08)' : 'none';
+    });
+  </script>
+</body>
+</html>
