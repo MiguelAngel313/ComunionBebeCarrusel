@@ -55,7 +55,6 @@
 
     .nav-logo span { color: var(--rosa-polvo); }
 
-    /* Mobile-first: menú oculto por defecto */
     .nav-links {
       position: fixed;
       top: 0; right: -100%;
@@ -143,11 +142,7 @@
       overflow: hidden;
     }
 
-    .carousel-deco {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
+    .carousel-deco { position: absolute; inset: 0; pointer-events: none; }
 
     .deco-item {
       position: absolute;
@@ -215,11 +210,7 @@
       transition: background 0.25s, transform 0.2s, border-color 0.25s, color 0.25s;
     }
 
-    .btn-primary {
-      background: var(--rosa-polvo);
-      color: white;
-    }
-
+    .btn-primary { background: var(--rosa-polvo); color: white; }
     .btn-primary:hover { background: var(--rosa-intenso); transform: translateY(-2px); }
 
     .btn-secondary {
@@ -249,11 +240,7 @@
     .stars { color: #E8A045; letter-spacing: 1px; }
 
     /* ─── STRIP ─── */
-    .strip {
-      background: var(--rosa-polvo);
-      padding: 12px 0;
-      overflow: hidden;
-    }
+    .strip { background: var(--rosa-polvo); padding: 12px 0; overflow: hidden; }
 
     .strip-inner {
       display: flex;
@@ -311,21 +298,12 @@
 
     /* ─── CATEGORÍAS ─── */
     .categorias { background: var(--blanco); }
-
     .categorias-inner { max-width: 1100px; margin: 0 auto; }
 
-    .categorias-header {
-      text-align: center;
-      margin-bottom: 44px;
-    }
-
+    .categorias-header { text-align: center; margin-bottom: 44px; }
     .categorias-header .section-desc { margin: 0 auto; }
 
-    .cat-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
+    .cat-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
 
     .cat-card {
       background: var(--rosa-crema);
@@ -336,16 +314,9 @@
       transition: transform 0.25s, box-shadow 0.25s;
     }
 
-    .cat-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 36px rgba(212,132,154,0.15);
-    }
+    .cat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(212,132,154,0.15); }
 
-    .cat-icon {
-      font-size: 2.4rem;
-      margin-bottom: 12px;
-      display: block;
-    }
+    .cat-icon { font-size: 2.4rem; margin-bottom: 12px; display: block; }
 
     .cat-card h3 {
       font-family: 'Playfair Display', serif;
@@ -355,11 +326,7 @@
       margin-bottom: 8px;
     }
 
-    .cat-card p {
-      font-size: 0.82rem;
-      line-height: 1.6;
-      color: var(--texto-suave);
-    }
+    .cat-card p { font-size: 0.82rem; line-height: 1.6; color: var(--texto-suave); }
 
     /* ─── NOSOTROS ─── */
     .nosotros { background: linear-gradient(135deg, #FDF0F3 0%, #FBF5E8 100%); }
@@ -383,11 +350,7 @@
       border: 1px solid var(--borde);
     }
 
-    .visual-big-icon {
-      font-size: 4rem;
-      display: block;
-      margin-bottom: 16px;
-    }
+    .visual-big-icon { font-size: 4rem; display: block; margin-bottom: 16px; }
 
     .visual-card-main h3 {
       font-family: 'Playfair Display', serif;
@@ -396,11 +359,7 @@
       margin-bottom: 8px;
     }
 
-    .visual-card-main p {
-      font-size: 0.88rem;
-      color: var(--texto-suave);
-      line-height: 1.7;
-    }
+    .visual-card-main p { font-size: 0.88rem; color: var(--texto-suave); line-height: 1.7; }
 
     .visual-badge {
       display: inline-flex;
@@ -419,12 +378,7 @@
 
     .nosotros-content .section-desc { margin-bottom: 28px; }
 
-    .features-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+    .features-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 
     .features-list li {
       display: flex;
@@ -439,14 +393,13 @@
 
     /* ─── COLECCIONES ─── */
     .colecciones { background: var(--blanco); }
-
     .colecciones-inner { max-width: 1100px; margin: 0 auto; }
 
     .col-header {
       display: flex;
       flex-direction: column;
       gap: 16px;
-      margin-bottom: 36px;
+      margin-bottom: 28px;
     }
 
     .col-header .btn-secondary {
@@ -455,6 +408,50 @@
       padding: 11px 24px;
       font-size: 0.82rem;
     }
+
+    /* ── BANNER CATÁLOGO ── */
+    .catalogo-banner {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+      background: linear-gradient(135deg, #FDF0F3 0%, #FBF5E8 100%);
+      border: 1px solid var(--borde);
+      border-radius: 16px;
+      padding: 20px 22px;
+      margin-bottom: 36px;
+    }
+
+    .catalogo-banner p {
+      font-size: 0.92rem;
+      color: var(--texto-suave);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .catalogo-banner p strong {
+      color: var(--texto);
+      font-weight: 600;
+    }
+
+    .btn-catalogo {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--rosa-polvo);
+      color: white;
+      border-radius: 50px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 12px 24px;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background 0.25s, transform 0.2s;
+    }
+
+    .btn-catalogo:hover { background: var(--rosa-intenso); transform: translateY(-2px); }
 
     .col-grid {
       display: grid;
@@ -470,10 +467,7 @@
       transition: transform 0.25s, box-shadow 0.25s;
     }
 
-    .col-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(212,132,154,0.18);
-    }
+    .col-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(212,132,154,0.18); }
 
     .col-img {
       height: 140px;
@@ -490,10 +484,7 @@
     .col-img-5 { background: linear-gradient(135deg, #F8EEF8 0%, #EDD4ED 100%); }
     .col-img-6 { background: linear-gradient(135deg, #FEF8E8 0%, #F8ECCB 100%); }
 
-    .col-info {
-      padding: 14px 16px 16px;
-      background: white;
-    }
+    .col-info { padding: 14px 16px 16px; background: white; }
 
     .col-info h4 {
       font-family: 'Playfair Display', serif;
@@ -521,20 +512,10 @@
     /* ─── TESTIMONIOS ─── */
     .testimonios { background: linear-gradient(160deg, #FDF0F3 0%, #FBF5E8 100%); }
 
-    .testimonios-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
+    .testimonios-inner { max-width: 900px; margin: 0 auto; text-align: center; }
     .testimonios-inner .section-title { margin-bottom: 40px; }
 
-    .testi-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      text-align: left;
-    }
+    .testi-grid { display: grid; grid-template-columns: 1fr; gap: 20px; text-align: left; }
 
     .testi-card {
       background: white;
@@ -560,9 +541,7 @@
       width: 38px; height: 38px;
       border-radius: 50%;
       background: var(--rosa-crema);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       font-size: 1.1rem;
       flex-shrink: 0;
     }
@@ -573,13 +552,7 @@
     /* ─── INFO TIENDA ─── */
     .info-tienda { background: var(--blanco); }
 
-    .info-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
+    .info-inner { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
 
     .info-block h2 {
       font-family: 'Playfair Display', serif;
@@ -607,9 +580,7 @@
       width: 40px; height: 40px;
       border-radius: 12px;
       background: var(--rosa-crema);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       font-size: 1rem;
       flex-shrink: 0;
     }
@@ -699,7 +670,6 @@
     }
 
     .cta-final-inner { position: relative; max-width: 680px; margin: 0 auto; }
-
     .cta-final .section-label { color: var(--dorado-claro); }
 
     .cta-final h2 {
@@ -720,12 +690,7 @@
       margin-bottom: 36px;
     }
 
-    .cta-btns {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-items: center;
-    }
+    .cta-btns { display: flex; flex-direction: column; gap: 12px; align-items: center; }
 
     .btn-gold, .btn-outline-white {
       width: 100%;
@@ -746,66 +711,40 @@
     .btn-gold { background: var(--dorado); color: white; }
     .btn-gold:hover { background: #B8924A; transform: translateY(-2px); }
 
-    .btn-outline-white {
-      background: transparent;
-      color: white;
-      border: 1.5px solid rgba(255,255,255,0.3);
-    }
-
+    .btn-outline-white { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.3); }
     .btn-outline-white:hover { border-color: rgba(255,255,255,0.7); transform: translateY(-2px); }
 
     /* ─── FOOTER ─── */
-    footer {
-      background: #1E1618;
-      padding: 40px 20px 28px;
-      text-align: center;
-    }
+    footer { background: #1E1618; padding: 40px 20px 28px; text-align: center; }
 
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: white;
-      margin-bottom: 8px;
-    }
-
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: white; margin-bottom: 8px; }
     .footer-logo span { color: var(--rosa-polvo); }
 
-    footer p {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.35);
-      line-height: 1.9;
-    }
-
+    footer p { font-size: 0.8rem; color: rgba(255,255,255,0.35); line-height: 1.9; }
     footer a { color: rgba(255,255,255,0.45); text-decoration: none; }
     footer a:hover { color: var(--rosa-polvo); }
 
-    .footer-divider {
-      width: 40px; height: 1px;
-      background: rgba(255,255,255,0.1);
-      margin: 18px auto;
-    }
+    .footer-divider { width: 40px; height: 1px; background: rgba(255,255,255,0.1); margin: 18px auto; }
 
     /* ══════════════════════════════
        TABLET — 600px+
     ══════════════════════════════ */
     @media (min-width: 600px) {
       section { padding: 80px 32px; }
-
       .hero { padding: 110px 32px 72px; }
 
-      .hero-actions {
-        flex-direction: row;
-        max-width: none;
-        width: auto;
-      }
-
+      .hero-actions { flex-direction: row; max-width: none; width: auto; }
       .btn-primary, .btn-secondary { width: auto; }
 
       .cat-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
       .col-grid  { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-
       .col-img { height: 180px; font-size: 3.5rem; }
+
+      .catalogo-banner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
 
       .testi-grid { grid-template-columns: 1fr 1fr; }
 
@@ -818,14 +757,11 @@
     ══════════════════════════════ */
     @media (min-width: 900px) {
       nav { padding: 18px 48px; }
-
       .nav-logo { font-size: 1.15rem; }
 
-      /* Menú visible, sin drawer */
       .nav-links {
         position: static;
-        width: auto;
-        height: auto;
+        width: auto; height: auto;
         flex-direction: row;
         gap: 32px;
         padding: 0;
@@ -838,30 +774,21 @@
       .nav-links li:last-child { margin-top: 0; }
       .nav-links a { padding: 0; font-size: 0.85rem; display: inline; }
       .nav-cta { padding: 9px 22px !important; }
-
       .nav-burger { display: none; }
 
       section { padding: 96px 48px; }
-
       .hero { padding: 130px 48px 96px; }
       .hero h1 { font-size: clamp(3rem, 6vw, 5.2rem); }
 
-      .nosotros-inner {
-        flex-direction: row;
-        gap: 72px;
-        align-items: center;
-      }
-
+      .nosotros-inner { flex-direction: row; gap: 72px; align-items: center; }
       .nosotros-inner > * { flex: 1; }
-
       .nosotros-visual { padding-bottom: 0; }
 
       .visual-badge {
         display: inline-flex;
         margin-top: 0;
         position: absolute;
-        bottom: -16px;
-        right: -16px;
+        bottom: -16px; right: -16px;
       }
 
       .visual-card-main { padding: 48px 36px; }
@@ -871,25 +798,17 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-end;
-        margin-bottom: 52px;
+        margin-bottom: 28px;
       }
 
       .col-header .btn-secondary { align-self: auto; }
-
       .col-img { height: 220px; font-size: 4rem; }
 
       .testi-grid { grid-template-columns: repeat(3, 1fr); }
 
-      .info-inner {
-        flex-direction: row;
-        gap: 64px;
-        align-items: start;
-      }
-
+      .info-inner { flex-direction: row; gap: 64px; align-items: start; }
       .info-inner > * { flex: 1; }
-
       .horarios-card { padding: 36px; }
-
       .cta-final { padding: 96px 48px; }
     }
 
@@ -905,11 +824,7 @@
       * { animation: none !important; transition: none !important; }
     }
 
-    img{
-      border-top-right-radius: 10px;
-      border-bottom-left-radius: 10px;
-    }
-
+    img { border-top-right-radius: 10px; border-bottom-left-radius: 10px; }
   </style>
 </head>
 <body>
@@ -932,14 +847,9 @@
   <!-- HERO -->
   <section class="hero">
     <div class="carousel-deco" id="carouselDeco"></div>
-
     <span class="hero-eyebrow">✦ Llerena, Badajoz ✦</span>
-    <h1>
-      El día más <em>especial</em><br>merece la ropa más bonita
-    </h1>
-    <p class="hero-sub">
-      Trajes de comunión, bautizo y celebraciones para los pequeños que llenan tu vida de alegría.
-    </p>
+    <h1>El día más <em>especial</em><br>merece la ropa más bonita</h1>
+    <p class="hero-sub">Trajes de comunión, bautizo y celebraciones para los pequeños que llenan tu vida de alegría.</p>
     <div class="hero-actions">
       <a href="#categorias" class="btn-primary">🌸 Ver colecciones</a>
       <a href="tel:672577711" class="btn-secondary">📞 Llamar ahora</a>
@@ -1007,9 +917,7 @@
           <h3>Comunión Bebé Carrusel</h3>
           <p>Tu tienda de confianza en Llerena para vestir a los pequeños de la familia en sus momentos más bonitos.</p>
         </div>
-        <div class="visual-badge">
-          ★ 5.0 &nbsp;·&nbsp; <small style="font-weight:400">Google</small>
-        </div>
+        <div class="visual-badge">★ 5.0 &nbsp;·&nbsp; <small style="font-weight:400">Google</small></div>
       </div>
       <div class="nosotros-content">
         <span class="section-label">Quiénes somos</span>
@@ -1036,12 +944,21 @@
         </div>
         <a href="tel:672577711" class="btn-secondary">Consultar disponibilidad</a>
       </div>
+
+      <!-- BANNER CATÁLOGO -->
+      <div class="catalogo-banner">
+        <p>¿Prefieres que te lo enviemos? <strong>Echa un vistazo</strong> a nuestro catálogo online. 📦</p>
+        <a href="https://tu-enlace-catalogo.com" target="_blank" rel="noopener" class="btn-catalogo">
+          📖 Catálogo
+        </a>
+      </div>
+
       <div class="col-grid">
         <div class="col-card">
           <div class="col-img col-img-1">🌸</div>
           <div class="col-tag">Niña</div>
           <div class="col-info">
-            <h4>Comunión Romantica</h4>
+            <h4>Comunión Romántica</h4>
             <p>Encaje y tul · Blanco y marfil</p>
           </div>
         </div>
@@ -1166,7 +1083,6 @@
           </div>
         </div>
       </div>
-
       <div class="horarios-card">
         <h3>🕐 Horario de la tienda</h3>
         <div class="horario-fila">
@@ -1217,7 +1133,6 @@
   </footer>
 
   <script>
-    // Carrusel decorativo ambient
     const decoEmojis = ['🌸','🕊️','🎀','💮','🌼','✨','🍀','🌷','⭐','💫','🌺','🤍'];
     const container = document.getElementById('carouselDeco');
     for (let i = 0; i < 22; i++) {
@@ -1232,10 +1147,8 @@
       container.appendChild(el);
     }
 
-    // Strip ticker
-    const stripItems = ['Comunión', '✦', 'Bautizo', '✦', 'Fiesta', '✦', 'Bebé', '✦', 'Llerena', '✦', 'Badajoz', '✦', '5.0 en Google', '✦'];
+    const stripItems = ['Comunión','✦','Bautizo','✦','Fiesta','✦','Bebé','✦','Llerena','✦','Badajoz','✦','5.0 en Google','✦'];
     const stripInner = document.getElementById('stripInner');
-    // duplicar para loop
     [...stripItems, ...stripItems].forEach(t => {
       const s = document.createElement('span');
       s.textContent = t;
@@ -1243,34 +1156,17 @@
       stripInner.appendChild(s);
     });
 
-    // Mobile nav
     const burger = document.getElementById('burger');
     const navLinks = document.getElementById('navLinks');
     const navOverlay = document.getElementById('navOverlay');
 
-    function openNav() {
-      navLinks.classList.add('open');
-      navOverlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
+    function openNav() { navLinks.classList.add('open'); navOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeNav() { navLinks.classList.remove('open'); navOverlay.classList.remove('open'); document.body.style.overflow = ''; }
 
-    function closeNav() {
-      navLinks.classList.remove('open');
-      navOverlay.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    burger.addEventListener('click', () => {
-      navLinks.classList.contains('open') ? closeNav() : openNav();
-    });
-
+    burger.addEventListener('click', () => navLinks.classList.contains('open') ? closeNav() : openNav());
     navOverlay.addEventListener('click', closeNav);
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
 
-    navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', closeNav);
-    });
-
-    // Nav scroll effect
     const nav = document.querySelector('nav');
     window.addEventListener('scroll', () => {
       nav.style.boxShadow = window.scrollY > 20 ? '0 2px 24px rgba(42,32,32,0.08)' : 'none';
